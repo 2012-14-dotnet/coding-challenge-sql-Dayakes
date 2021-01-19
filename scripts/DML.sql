@@ -35,9 +35,18 @@ values ((select ID from Employee where FirstName = "Frank" and LastName = "Gooda
 insert into EmpDetails(EmployeeID,Salary,Address_1,City,State,Country)
 values ((select ID from Employee where FirstName = "Craig" and LastName = "Gary" ),80000,"45 Token Street","Ball Town","Square State","Octagonal Country")
 
+insert into EmpDetails(EmployeeID,Salary,Address_1,City,State,Country)
+values ((select ID from Employee where FirstName = "Tina" and LastName = "Smith" ),60000,"45 Street","Town","State","Country")
+
 
 select FirstName,LastName 
 from Employee 
+left join Department on Employee.DeptID = Department.ID
+where Employee.DeptID = (select ID from Department where Name = "Marketing")
 
-
+select SUM(Salary) as TotalSalaryOfMarketing
+from EmpDetails
+left join Employee on Employee.ID = EmpDetails.EmployeeID
+left join Department on Department.ID = Employee.DeptID
+where Department.Name = "Marketing"
 
