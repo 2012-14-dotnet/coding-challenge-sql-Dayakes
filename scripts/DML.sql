@@ -51,6 +51,12 @@ left join Employee on Employee.ID = EmpDetails.EmployeeID
 left join Department on Department.ID = Employee.DeptID
 where Department.Name = "Marketing"
 
+DECLARE @Department as VARCHAR(255)
+SET @Department = "Marketing"
+select count(EmployeeID) as TotalEmployees
+from Employee
+left join Department on Department.ID = Employee.DeptID
+where Department.Name = @Department
 
 update EmpDetails
 set Salary = 90000
