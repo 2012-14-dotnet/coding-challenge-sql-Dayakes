@@ -44,9 +44,16 @@ from Employee
 left join Department on Employee.DeptID = Department.ID
 where Employee.DeptID = (select ID from Department where Name = "Marketing")
 
+
 select SUM(Salary) as TotalSalaryOfMarketing
 from EmpDetails
 left join Employee on Employee.ID = EmpDetails.EmployeeID
 left join Department on Department.ID = Employee.DeptID
 where Department.Name = "Marketing"
 
+
+update EmpDetails
+set Salary = 90000
+from EmpDetails
+left join Employee on Employee.ID = EmpDetails.EmployeeID
+where FirstName = "Tina" and LastName = "Smith"
